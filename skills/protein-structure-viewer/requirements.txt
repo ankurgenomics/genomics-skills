@@ -1,0 +1,7 @@
+requests>=2.32
+tenacity>=9.0
+pandas>=2.2
+numpy>=1.26
+matplotlib>=3.9
+biopython>=1.83
+scipy>=1.13

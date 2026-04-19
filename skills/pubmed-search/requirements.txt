@@ -1,0 +1,6 @@
+requests>=2.32
+tenacity>=9.0
+pandas>=2.2
+numpy>=1.26
+matplotlib>=3.9
+python-dotenv>=1.0
