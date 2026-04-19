@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Ankur Sharma | Agentic AI · Machine Learning · Bioinformatics · Data Science
+# GitHub: https://github.com/ankurgenomics | Portfolio: agentic-genomics
 """go-enrichment — GO/KEGG/Reactome enrichment via g:Profiler REST API.
 
 Usage

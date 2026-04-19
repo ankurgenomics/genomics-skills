@@ -1,4 +1,6 @@
 """Skill discovery and execution engine.
+# Author: Ankur Sharma | Agentic AI · Machine Learning · Bioinformatics · Data Science
+# GitHub: https://github.com/ankurgenomics | Portfolio: agentic-genomics
 
 Scans the skills/ directory for SKILL.md files and resolves the matching
 Python script to run. Includes an optional LLM-backed skill router that

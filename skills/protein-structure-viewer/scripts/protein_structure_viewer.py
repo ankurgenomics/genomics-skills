@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Ankur Sharma | Agentic AI · Machine Learning · Bioinformatics · Data Science
+# GitHub: https://github.com/ankurgenomics | Portfolio: agentic-genomics
 """protein-structure-viewer — 3-D HTML viewer + pocket detection + B-factor plot.
 
 Fetches AlphaFold or PDB structure, generates a self-contained HTML viewer,

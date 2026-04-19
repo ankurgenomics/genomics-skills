@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Ankur Sharma | Agentic AI · Machine Learning · Bioinformatics · Data Science
+# GitHub: https://github.com/ankurgenomics | Portfolio: agentic-genomics
 """survival-analysis — Kaplan–Meier + Cox PH from TCGA gene expression.
 
 Fetches real expression + clinical survival data from cBioPortal,

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Ankur Sharma | Agentic AI · Machine Learning · Bioinformatics · Data Science
+# GitHub: https://github.com/ankurgenomics | Portfolio: agentic-genomics
 """variant-context — somatic mutation landscape for a gene.
 
 Fetches mutation data from MyVariant.info, produces a lollipop plot,

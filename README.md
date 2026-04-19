@@ -1,41 +1,56 @@
 # genomics-skills
 
-> **A modular, agent-friendly genomics skill library.**  
-> 8 pure-Python skills · SKILL.md contracts · real TCGA data via cBioPortal · AI-powered skill routing · compatible with bioinfor-claw, OpenClaw, Claude Code, or any custom agent.
+> **Built by [Ankur Sharma](https://github.com/ankurgenomics) — Agentic AI · Machine Learning · Bioinformatics · Data Science**  
+> A production-quality, agent-friendly genomics skill library demonstrating end-to-end ML/AI engineering for life sciences.
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue?style=flat-square)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 [![Skills: 8](https://img.shields.io/badge/skills-8-0b8a7a?style=flat-square)](skills/)
 [![Tests: 14 passed](https://img.shields.io/badge/tests-14%20passed-brightgreen?style=flat-square)](tests/)
-[![Status: Alpha](https://img.shields.io/badge/status-alpha-orange?style=flat-square)]()
+[![Agentic AI](https://img.shields.io/badge/Agentic-AI-blueviolet?style=flat-square)]()
+[![LLM Routing](https://img.shields.io/badge/LLM-Claude%20Haiku-orange?style=flat-square)]()
+
+---
+
+## About the Author
+
+**Ankur Sharma** — AI Engineer · ML Scientist · Bioinformatician  
+🔗 [GitHub: @ankurgenomics](https://github.com/ankurgenomics) · [agentic-genomics](https://github.com/ankurgenomics/agentic-genomics)
+
+### Skills demonstrated in this repo
+
+| Domain | Technologies |
+|---|---|
+| **Agentic AI** | LLM-backed skill routing (Claude Haiku), SKILL.md agent contracts, tool-calling patterns |
+| **Machine Learning** | Survival analysis (Cox regression), statistical modelling, feature engineering from omics data |
+| **Data Science** | Pandas, NumPy, SciPy, Seaborn/Matplotlib, Parquet caching, TSV/JSON pipelines |
+| **Bioinformatics** | TCGA, cBioPortal REST API, Kaplan-Meier, GO/KEGG enrichment, PDB protein structure, PubMed |
+| **Software Engineering** | Modular Python package, argparse CLI, pytest (14 tests), pyproject.toml, CI-ready |
+| **MLOps / Data Eng.** | REST API integration, Parquet caching, reproducible outputs, gitignore hygiene |
+| **NLP / LLMs** | Natural-language skill routing via Anthropic API, prompt engineering |
+| **DevOps** | Git, GitHub, virtual environments, pip-installable package with optional dependency groups |
 
 ---
 
 ## Why this repo exists
 
-My flagship project [**agentic-genomics**](https://github.com/ankurgenomics/agentic-genomics) focuses on the **variant → clinical interpretation** chain: a LangGraph agent that takes a VCF + HPO phenotype terms and returns ranked, explainable candidate variants with ACMG-lite evidence chains.
+My flagship project [**agentic-genomics**](https://github.com/ankurgenomics/agentic-genomics) is a full
+**LangGraph agentic pipeline** that takes a patient VCF + HPO phenotype terms and returns ranked candidate
+variants with ACMG-lite evidence chains.
 
-Once the top candidate genes are identified, a researcher inevitably asks follow-up questions:
+This repo is the **downstream skill layer** — 8 deterministic, agent-callable tools that answer follow-up
+genomics questions using real public data:
 
 > *"What does expression of this gene look like across TCGA cancer types?"*  
 > *"Is high expression prognostic in LUAD?"*  
-> *"Where does this missense land on the 3-D structure?"*  
-> *"What did the last 5 papers say about this variant?"*
-
-This repo is the **downstream skill layer** that answers those questions — deterministic, agent-callable, output-compatible, and independently useful.
-
-Each skill is:
-- A **self-contained Python script** with explicit `argparse` flags
-- Documented by a **SKILL.md** (purpose · inputs · outputs · trigger phrases · execution policy)
-- Backed by **real data** from public APIs (cBioPortal, MyVariant.info, UniProt, NCBI) — no synthetic samples
-- Compatible with [bioinfor-claw](https://github.com/MDhewei/bioinfor-claw), OpenClaw, Claude Code, or any agent that scans `SKILL.md` files
-- Callable directly from the CLI, a Snakemake rule, or a Nextflow process — no agent required
+> *"Where does this missense land on the 3-D protein structure?"*  
+> *"What do the last 20 papers say about this variant?"*
 
 ---
 
 ## Example outputs
 
-### Pan-cancer expression — TP53 across 31 TCGA projects (9,479 real samples)
+### Pan-cancer expression — TP53 across 31 TCGA projects (9,479 real patient samples)
 
 ![TP53 pan-cancer expression](examples/TP53_pancancer_expression.png)
 
@@ -43,26 +58,26 @@ Each skill is:
 
 ---
 
-### Kaplan-Meier survival — TP53 expression in TCGA-LUAD (501 patients)
+### Kaplan-Meier survival — TP53 expression in TCGA-LUAD (501 real patients)
 
 ![TP53 LUAD Kaplan-Meier](examples/TP53_TCGA_LUAD_km_os.png)
 
-*High vs. low expression split at median · Overall survival · log-rank p-value shown*
+*High vs. low expression split at median · Overall survival · log-rank p-value computed*
 
 ---
 
 ## Skill catalog
 
-| # | Skill | Scenario | Key outputs |
-|---|-------|----------|-------------|
-| 1 | [`variant-context`](skills/variant-context/) | Variant annotation | Mutation lollipop plot, hotspot TSV, somatic frequency bar chart |
-| 2 | [`protein-variant-mapper`](skills/protein-variant-mapper/) | Protein structure | 3-D HTML viewer with labeled variants, lollipop map PNG |
-| 3 | [`protein-structure-viewer`](skills/protein-structure-viewer/) | Protein structure | Interactive 3-D viewer HTML, pocket TSV, B-factor plot |
-| 4 | [`tcga-expression`](skills/tcga-expression/) | Gene expression | Pan-cancer expression TSV + box plots (9,479 samples · 31 cancers) |
-| 5 | [`survival-analysis`](skills/survival-analysis/) | Survival | KM curves PNG/SVG, log-rank p-value, at-risk table, survival TSV |
-| 6 | [`go-enrichment`](skills/go-enrichment/) | Gene-list analysis | GO/KEGG enrichment TSV, bubble plot PNG |
-| 7 | [`pubmed-search`](skills/pubmed-search/) | Literature | Results TSV, markdown digest, keyword + timeline plots |
-| 8 | [`plot-volcano`](skills/plot-volcano/) | Publication figures | 300 DPI PNG + SVG, annotated TSV, quadrant counts |
+| # | Skill | Agentic use case | ML / DS techniques | Key outputs |
+|---|-------|------------------|--------------------|-------------|
+| 1 | [`tcga-expression`](skills/tcga-expression/) | "Show expression across cancers" | Data fetching, log-transform, boxplots | TSV + PNG/SVG, 9,479 samples |
+| 2 | [`survival-analysis`](skills/survival-analysis/) | "Is this gene prognostic?" | Cox PH regression, KM estimator, log-rank test | KM curves, survival TSV |
+| 3 | [`variant-context`](skills/variant-context/) | "Annotate this variant" | REST API integration, lollipop viz | Lollipop PNG, hotspot TSV |
+| 4 | [`protein-variant-mapper`](skills/protein-variant-mapper/) | "Show variant on 3-D structure" | PDB parsing, 3-D structure rendering | Interactive HTML, lollipop PNG |
+| 5 | [`protein-structure-viewer`](skills/protein-structure-viewer/) | "View the protein structure" | PDB file parsing, pocket detection | HTML viewer, B-factor plot |
+| 6 | [`go-enrichment`](skills/go-enrichment/) | "What pathways is this gene in?" | Gene set enrichment, REST API | GO/KEGG TSV, bubble plot |
+| 7 | [`pubmed-search`](skills/pubmed-search/) | "Recent papers on this gene?" | NLP digest, citation trends | TSV, markdown digest, timeline plot |
+| 8 | [`plot-volcano`](skills/plot-volcano/) | "Make a publication figure" | DE result visualization, FDR thresholds | 300 DPI PNG + SVG |
 
 ---
 
@@ -71,59 +86,46 @@ Each skill is:
 ```
 genomics-skills/
 │
-├── skills/                          ← one directory per skill
+├── skills/                          ← one folder per skill (agent-discoverable)
 │   ├── tcga-expression/
-│   │   ├── SKILL.md                 ← agent-readable contract
-│   │   ├── scripts/
-│   │   │   └── tcga_expression.py   ← pure-Python, cBioPortal REST API
+│   │   ├── SKILL.md                 ← agent-readable contract (inputs · outputs · triggers)
+│   │   ├── scripts/tcga_expression.py   ← pure Python, cBioPortal REST API
 │   │   └── requirements.txt
-│   ├── survival-analysis/
-│   ├── variant-context/
-│   ├── protein-variant-mapper/
-│   ├── protein-structure-viewer/
-│   ├── go-enrichment/
-│   ├── pubmed-search/
-│   └── plot-volcano/
+│   └── ... (7 more skills)
 │
-├── src/genomics_skills/             ← installable Python package
-│   ├── cli.py                       ← `genomics-skill run/list/info/suggest`
-│   └── runner.py                    ← skill discovery + LLM-backed routing
+├── src/genomics_skills/
+│   ├── cli.py      ← `genomics-skill run / list / info / suggest` (Typer CLI)
+│   └── runner.py   ← skill discovery engine + LLM routing (Claude Haiku)
 │
-├── examples/                        ← example output images (tracked in git)
-├── tests/                           ← pytest suite (14 tests)
-├── docs/
-│   ├── skill-authoring-guide.md
-│   └── integration-guide.md
-└── pyproject.toml
+├── examples/       ← real output images from test runs
+├── tests/          ← pytest suite (14 tests: discovery + smoke)
+└── pyproject.toml  ← pip-installable package with optional dependency groups
 ```
+
+**Key engineering decisions:**
+- **Parquet caching** at `~/.cache/genomics-skills/` — repeat queries are instant
+- **LLM routing** via Claude Haiku: `genomics-skill suggest "natural language query"` maps to the right skill
+- **No auth, no downloads** — all data fetched via public REST APIs (cBioPortal, MyVariant.info, NCBI)
+- **Stable output formats** (TSV, PNG/SVG, JSON) for downstream chaining without glue code
 
 ---
 
 ## Quick start
 
 ```bash
-# 1. Clone and install
 git clone https://github.com/ankurgenomics/genomics-skills.git
 cd genomics-skills
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[all]"
 
-# 2. Set env vars (only needed for pubmed-search and AI skill routing)
-cp .env.example .env
-# edit .env: set NCBI_EMAIL, optionally ANTHROPIC_API_KEY
-
-# 3. Run a skill directly
+# Run a skill directly
 python skills/tcga-expression/scripts/tcga_expression.py \
     --gene TP53 --mode pan-cancer --outdir results/
 
-# 4. Or via the CLI
+# Or via CLI
 genomics-skill run tcga-expression --gene TP53 --mode pan-cancer
-
-# 5. List all available skills
 genomics-skill list
-
-# 6. Use AI to find the right skill (requires ANTHROPIC_API_KEY)
-genomics-skill suggest "show gene expression across cancer types"
+genomics-skill suggest "show me survival data for BRCA1 in breast cancer"
 ```
 
 ---
@@ -131,136 +133,111 @@ genomics-skill suggest "show gene expression across cancer types"
 ## CLI reference
 
 ```
-genomics-skill list                          # list all discovered skills
-genomics-skill info <skill-name>             # show SKILL.md for a skill
-genomics-skill run  <skill-name> [args...]   # run a skill by name
-genomics-skill suggest "<natural language>"  # AI-powered skill routing (Claude Haiku)
+genomics-skill list                          # list all 8 skills
+genomics-skill info <skill-name>             # show SKILL.md contract
+genomics-skill run  <skill-name> [args...]   # execute a skill
+genomics-skill suggest "<natural language>"  # AI routing via Claude Haiku
 ```
 
-### Example runs
+### More example runs
 
 ```bash
-# Pan-cancer expression for BRCA1
-genomics-skill run tcga-expression --gene BRCA1 --mode pan-cancer --outdir results/
-
-# Tumor-vs-normal for EGFR in LUSC
-genomics-skill run tcga-expression --gene EGFR --mode tumor-vs-normal --cancer LUSC --outdir results/
-
-# Kaplan-Meier overall survival for KRAS in colorectal cancer
+# Survival analysis — KRAS in colorectal cancer
 genomics-skill run survival-analysis --gene KRAS --cancer TCGA-COAD --endpoint os --outdir results/
 
-# Variant annotation for TP53
-genomics-skill run variant-context --gene TP53 --variant "R175H" --cancer LUAD --outdir results/
+# GO enrichment for a gene list
+genomics-skill run go-enrichment --genes TP53,BRCA1,EGFR,KRAS --outdir results/
 
 # PubMed search
-genomics-skill run pubmed-search --query "BRCA1 homologous recombination" --max-results 20 --outdir results/
+genomics-skill run pubmed-search --query "BRCA1 homologous recombination PARP inhibitor" --max-results 25 --outdir results/
 
-# AI skill routing
-genomics-skill suggest "what does KRAS expression look like in pancreatic cancer?"
+# AI-powered skill routing
+genomics-skill suggest "what does EGFR expression look like in lung cancer?"
+genomics-skill suggest "run survival analysis for MYC in glioblastoma"
 ```
 
 ---
 
 ## Data sources
 
-| Skill | Data source | Notes |
+| Skill | Source | Scale |
 |---|---|---|
-| `tcga-expression` | [cBioPortal REST API](https://www.cbioportal.org/api) | TCGA Pan-Cancer Atlas 2018 · RNA-seq v2 RSEM · 9,479 samples · 31 cancers |
-| `survival-analysis` | [cBioPortal REST API](https://www.cbioportal.org/api) | OS/DFS clinical data merged with expression |
-| `variant-context` | [MyVariant.info](https://myvariant.info) | Somatic variant frequency + hotspot annotation |
-| `protein-variant-mapper` | [UniProt](https://www.uniprot.org) + [AlphaFold](https://alphafold.ebi.ac.uk) | Variant-to-3D structure mapping |
-| `protein-structure-viewer` | [RCSB PDB](https://www.rcsb.org) | Interactive structure + pocket detection |
-| `pubmed-search` | [NCBI E-utilities](https://www.ncbi.nlm.nih.gov/books/NBK25497/) + Europe PMC | Requires `NCBI_EMAIL` in `.env` |
-| `go-enrichment` | [g:Profiler REST API](https://biit.cs.ut.ee/gprofiler/) | GO/KEGG enrichment, no auth needed |
-| `plot-volcano` | Local (user-provided TSV) | Gene-level DE results as input |
-
-Results are **Parquet-cached** at `~/.cache/genomics-skills/` — subsequent runs with the same gene are instant.
+| `tcga-expression` | [cBioPortal REST API](https://www.cbioportal.org/api) | 9,479 samples · 31 TCGA cancer types |
+| `survival-analysis` | [cBioPortal REST API](https://www.cbioportal.org/api) | Real OS/DFS clinical data |
+| `variant-context` | [MyVariant.info](https://myvariant.info) | ClinVar + COSMIC annotations |
+| `protein-variant-mapper` | [UniProt](https://www.uniprot.org) + [AlphaFold](https://alphafold.ebi.ac.uk) | AF2 + PDB structures |
+| `protein-structure-viewer` | [RCSB PDB](https://www.rcsb.org) | Any PDB entry |
+| `pubmed-search` | [NCBI E-utilities](https://www.ncbi.nlm.nih.gov/books/NBK25497/) + Europe PMC | Real-time PubMed |
+| `go-enrichment` | [g:Profiler REST API](https://biit.cs.ut.ee/gprofiler/) | GO · KEGG · Reactome |
+| `plot-volcano` | Local DE results TSV | User-provided |
 
 ---
 
-## How to use with agentic-genomics
+## How this fits into the agentic pipeline
 
 ```
 proband.vcf + HPO terms
         │
         ▼
-  agentic-genomics (GenomicsCopilot)
-  → ranked variants + ACMG-lite evidence
+  agentic-genomics  ← LangGraph agent (see: github.com/ankurgenomics/agentic-genomics)
+  → variant ranking + ACMG-lite evidence
         │
         ▼  top candidate genes
-  genomics-skills (OmicsContextAgent)
-  → tcga-expression       → is this gene dysregulated in relevant cancer type?
-  → survival-analysis     → is expression prognostic?
-  → variant-context       → somatic hotspot landscape in TCGA
-  → protein-variant-mapper → 3-D structure with the patient variant labeled
-  → go-enrichment         → pathway context for co-expression partners
-  → pubmed-search         → recent literature for the gene + variant
+  genomics-skills  ← this repo
+  → tcga-expression     → dysregulation across cancer types
+  → survival-analysis   → prognostic value
+  → variant-context     → somatic hotspot landscape
+  → protein-variant-mapper → 3-D structural context
+  → go-enrichment       → pathway membership
+  → pubmed-search       → recent literature
         │
         ▼
   Consolidated research report (markdown + figures)
 ```
-
-See [`docs/integration-guide.md`](docs/integration-guide.md) for the LangGraph wiring.
-
----
-
-## How to use with bioinfor-claw / OpenClaw / Claude Code
-
-Because every skill ships a `SKILL.md`, it is auto-discoverable by any compatible agent:
-
-```bash
-# Register via OpenClaw extraDirs (edit ~/.openclaw/openclaw.json):
-{ "skills": { "load": { "extraDirs": ["/path/to/genomics-skills/skills"] } } }
-
-# Or launch Claude Code from repo root — it scans SKILL.md automatically
-cd genomics-skills && claude
-```
-
----
-
-## Design principles
-
-1. **One purpose per skill.** Each skill solves a single, well-scoped problem.
-2. **SKILL.md is the contract.** Inputs, outputs, defaults, failure conditions, and trigger phrases — readable by both humans and agents.
-3. **Real data only.** All skills fetch from live public APIs. No synthetic or placeholder data.
-4. **Pure Python, no R.** numpy / pandas / matplotlib / scipy / lifelines / biopython stack only.
-5. **Stable output formats.** TSV, PNG/SVG, JSON manifests. Designed for downstream chaining.
-6. **Agents reason, skills compute.** Skills are deterministic executors. Judgment belongs to the agent layer.
-7. **Research-grade, not clinical-grade.**
 
 ---
 
 ## Running tests
 
 ```bash
-pytest tests/ -v   # → 14 passed
+pytest tests/ -v   # → 14 passed in ~6s
 ```
+
+Covers: skill auto-discovery, SKILL.md contract validation, and `--help` smoke tests for all 8 skills.
 
 ---
 
 ## Roadmap
 
-| Skill | Status | Notes |
-|-------|--------|-------|
-| `variant-context` | 🟢 MVP | Mutation lollipop + hotspot from MyVariant.info |
-| `protein-variant-mapper` | �� MVP | Map variants onto AlphaFold / PDB 3-D structure |
-| `protein-structure-viewer` | 🟢 MVP | Interactive HTML viewer, pocket detection |
-| `tcga-expression` | 🟢 Live data | 9,479 samples · 31 cancers · cBioPortal Pan-Cancer Atlas 2018 |
-| `survival-analysis` | 🟢 Live data | KM + Cox from real TCGA clinical + expression data |
-| `go-enrichment` | 🟢 MVP | GO/KEGG enrichment via g:Profiler REST API |
-| `pubmed-search` | 🟢 MVP | PubMed E-utilities + citation trends |
-| `plot-volcano` | 🟢 MVP | Publication-quality volcano (300 DPI PNG + SVG) |
-| `crispr-sgrna-design` | 🔵 Planned | SpCas9 sgRNA design for candidate genes |
-| `coexpression-network` | 🔵 Planned | STRING PPI + co-expression network |
-| `depmap-essentiality` | 🔵 Planned | DepMap dependency profiling for candidate genes |
-| `single-cell-marker` | 🔵 Planned | scRNA-seq marker gene context |
+| Skill | Status |
+|-------|--------|
+| `tcga-expression` | 🟢 Live — 9,479 samples · 31 cancers · cBioPortal |
+| `survival-analysis` | 🟢 Live — KM + Cox from real TCGA clinical data |
+| `variant-context` | 🟢 MVP |
+| `protein-variant-mapper` | 🟢 MVP |
+| `protein-structure-viewer` | 🟢 MVP |
+| `go-enrichment` | 🟢 MVP |
+| `pubmed-search` | 🟢 MVP |
+| `plot-volcano` | 🟢 MVP |
+| `crispr-sgrna-design` | 🔵 Planned |
+| `coexpression-network` | 🔵 Planned — STRING PPI |
+| `depmap-essentiality` | 🔵 Planned — DepMap |
+| `single-cell-marker` | 🔵 Planned — scRNA-seq |
 
 ---
 
 ## Author
 
-**Ankur Sharma** — AI · ML · Bioinformatics · Genomics  
-[GitHub: @ankurgenomics](https://github.com/ankurgenomics) · [agentic-genomics](https://github.com/ankurgenomics/agentic-genomics)
+**Ankur Sharma**  
+AI Engineer · Machine Learning Scientist · Bioinformatician · Data Scientist
+
+📧 learning.ankur.ai@gmail.com  
+🔗 [GitHub: @ankurgenomics](https://github.com/ankurgenomics)  
+🧬 [agentic-genomics](https://github.com/ankurgenomics/agentic-genomics) — LangGraph variant interpretation pipeline  
+🛠 [genomics-skills](https://github.com/ankurgenomics/genomics-skills) — this repo
+
+**Core competencies demonstrated here:**  
+`Agentic AI` · `LLM Integration` · `REST API Engineering` · `Machine Learning` · `Survival Analysis` · `Data Science` · `Python` · `Bioinformatics` · `TCGA / Genomics` · `Software Engineering` · `pytest` · `Modular Architecture`
 
 ---
 
@@ -268,5 +245,5 @@ pytest tests/ -v   # → 14 passed
 
 MIT — see [LICENSE](LICENSE).
 
-> ⚠️ **Research demonstration only.** Not for clinical use. Not a medical device.  
-> Skills use public APIs (cBioPortal, MyVariant.info, UniProt, NCBI) — check their individual terms of use.
+> ⚠️ Research demonstration only. Not for clinical use. Not a medical device.  
+> Data sourced from public APIs — see each source's terms of use.

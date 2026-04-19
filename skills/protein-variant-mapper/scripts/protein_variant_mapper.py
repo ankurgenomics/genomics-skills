@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Ankur Sharma | Agentic AI · Machine Learning · Bioinformatics · Data Science
+# GitHub: https://github.com/ankurgenomics | Portfolio: agentic-genomics
 """protein-variant-mapper — map missense variants onto a 3-D protein structure.
 
 Fetches UniProt domain annotations + AlphaFold structure, then produces:

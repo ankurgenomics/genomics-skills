@@ -98,3 +98,6 @@ See `requirements.txt` in this directory.
 - [ ] Tested locally: `python skills/your-skill/scripts/your_skill.py --help` exits 0
 - [ ] `genomics-skill list` shows your new skill
 - [ ] At least one smoke test added to `tests/test_skills_smoke.py`
+
+---
+*Authored by [Ankur Sharma](https://github.com/ankurgenomics) — Agentic AI · Machine Learning · Bioinformatics · Data Science*

@@ -62,3 +62,8 @@ python skills/survival-analysis/scripts/survival_analysis.py \
 ## Dependencies
 
 See `requirements.txt` in this directory.
+
+---
+**Author:** Ankur Sharma — Agentic AI · Machine Learning · Bioinformatics · Data Science  
+**GitHub:** [ankurgenomics](https://github.com/ankurgenomics)  
+**Project:** [genomics-skills](https://github.com/ankurgenomics/genomics-skills)

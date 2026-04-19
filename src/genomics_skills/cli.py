@@ -1,4 +1,6 @@
 """genomics-skill CLI — list and run genomics skills from the terminal.
+# Author: Ankur Sharma | Agentic AI · Machine Learning · Bioinformatics · Data Science
+# GitHub: https://github.com/ankurgenomics | Portfolio: agentic-genomics
 
 Usage
 -----

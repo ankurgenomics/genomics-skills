@@ -139,3 +139,6 @@ surv = pd.read_csv("reports/TP53/TP53_TCGA_LUAD_survival.tsv", sep="\t")
 high_genes = surv[surv["group"] == "High"]["gene_id"].tolist()
 # ... write to file, then pass to go-enrichment --genes
 ```
+
+---
+*Authored by [Ankur Sharma](https://github.com/ankurgenomics) — Agentic AI · Machine Learning · Bioinformatics · Data Science*

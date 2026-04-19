@@ -1,8 +1,8 @@
 # SKILL: tcga-expression
 
 ## Purpose
-Query the GDC (Genomic Data Commons) API to retrieve TCGA gene expression
-data for a given gene, then produce:
+Query the **cBioPortal REST API** to retrieve real TCGA Pan-Cancer Atlas 2018
+RNA-seq v2 RSEM expression for a gene (9,479 samples · 31 cancer types), then produce:
 - Pan-cancer expression box plots across all TCGA cohorts (PNG + SVG)
 - Tumor-vs-normal comparison for a specific cohort (if requested)
 - Expression TSV for downstream statistical analysis or survival modeling
@@ -57,3 +57,8 @@ python skills/tcga-expression/scripts/tcga_expression.py \
 ## Dependencies
 
 See `requirements.txt` in this directory.
+
+---
+**Author:** Ankur Sharma — Agentic AI · Machine Learning · Bioinformatics · Data Science  
+**GitHub:** [ankurgenomics](https://github.com/ankurgenomics)  
+**Project:** [genomics-skills](https://github.com/ankurgenomics/genomics-skills)

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Ankur Sharma | Agentic AI · Machine Learning · Bioinformatics · Data Science
+# GitHub: https://github.com/ankurgenomics | Portfolio: agentic-genomics
 """tcga-expression — pan-cancer and tumor-vs-normal expression from TCGA via cBioPortal.
 
 Uses the cBioPortal REST API (no auth, no file downloads) to fetch
